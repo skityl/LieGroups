@@ -126,20 +126,37 @@ triangular matrices equal to $1$ on the main diagonal.
 
 \subsection*{(b)}
 Now that we know $\Heis$ is a Lie group, denote its Lie algebra by $\Heisalg$.
+Define the basis vectors,
+\begin{align*}
+    e_1 &= \begin{pmatrix}
+            0 & 1 & 0\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{pmatrix}\\
+    e_2 &= \begin{pmatrix}
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+            0 & 0 & 0
+        \end{pmatrix}\\
+    e_3 &= \begin{pmatrix}
+            0 & 0 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0
+        \end{pmatrix}\\
+\end{align*}
 \begin{lemma}
     The tangent space at the identity $T_{I}\Heis$ can be described by the set of 
     matrices
     \begin{equation*}
-        \begin{pmatrix}
-            0 & a & b\\
-            0 & 0 & c\\
-            0 & 0 & 0
-        \end{pmatrix}
+        \Rl e_1+\Rl e_2+\Rl e_3.
     \end{equation*}
-    for $a,b,c \in \Rl$.
 \end{lemma}
 \begin{proof}
+    Since $\Heis$ is a Lie subgroup of $GL(n,\Rl)$, we can describe the 
+    tangent space of $\Heis$ as a subspace of the tangent space of $GL(n,\Rl)$,
+    which we know to be $M_n(\Rl)$. 
     
+
 \end{proof}
 \begin{theorem}
     Thus the Lie Bracket on $\Heisalg$ is given by 
