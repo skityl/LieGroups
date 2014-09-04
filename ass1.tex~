@@ -1,0 +1,164 @@
+\documentclass{unswmaths}
+\usepackage{unswshortcuts}
+\begin{document}
+\subject{Lie Groups}
+\author{Edward McDonald}
+\title{Assignment 1}
+\studentno{3375335}
+\setlength\parindent{0pt}
+\unswtitle{}
+
+
+\newcommand{\Heis}{\mathbb{H}}
+\newcommand{\Heisalg}{\mathfrak{h}}
+
+\section*{Question 1}
+    Let $R$ be a commutative ring, and $A$ is an $R$ algebra. Suppose
+    $X$ and $Y$ are $R$-linear derivations on $A$, that is
+    $X,Y:A\rightarrow A$ and for all $f,g \in A$
+    and $r \in R$,
+    \begin{align*}
+        X(fg) &= X(f)g+fX(g)\\
+        X(f+g) &= X(f) + X(g)\\
+        X(rf) &= rX(f)
+    \end{align*}
+    and similarly for $Y$.
+    \begin{theorem}
+        The commutator $[X,Y] = XY-YX$ is an $R$-linear derivation on $A$.
+    \end{theorem}
+    \begin{proof}
+        Clearly $[X,Y]$ is $R$-linear, since it is a sum
+        of compositions of $R$-linear maps.
+        
+        Now suppose $f,g\in A$. Then we simply must expand out,
+        \begin{align*}
+            [X,Y](fg) &= XY(fg)-YX(fg)\\
+            &= X(Y(f)g+fY(g))-Y(X(f)g+fX(g))\\
+            &= X(Y(f)g)+X(fY(g))-Y(X(f)g)-Y(fX(g))\\
+            &= (XY)(f)g+Y(f)X(g)+X(f)Y(g)+f(XY)(g)-(YX)(f)g-X(f)Y(g)-\\
+            &Y(f)X(g)-f(YX)(g)\\
+            &= [X,Y](f)g+f[X,Y](g)
+        \end{align*}
+    \end{proof}
+    
+    Note that we did not need to assume the commutativity of $A$.
+    
+    
+\section*{Question 2}
+For this question, $M$ and $M'$ are smooth manifolds
+and $f:M\rightarrow M'$ is smooth. We say that vector fields
+$X \in \mathfrak{X}(M)$ and $X' \in \mathfrak{X}(M')$ are
+$f$-related if $df_p(X) = X'_{f(p)}$ for all $p \in M$.
+
+\begin{theorem}
+    If $X,Y \in \mathfrak{X}(M)$ are $f$-related to $X',Y' \in \mathfrak{X}(M')$
+    respectively, then $[X,Y]$ is $f$-related to $[X',Y']$.
+\end{theorem}
+\begin{proof}
+    We must compute $df_p[X,Y]$. To do this, let $h \in C^{\infty}(M')$ and $p \in M$. Then by definition,
+    \begin{align*}
+        df_p[X,Y](h) &= [X,Y](h\circ f)(p)\\
+        &= (XY)(h\circ f)(p)-(YX)(h\circ f)(p)\\
+        &= X(df(Y)(h))(p)-Y(df(X)(h))(p)\\
+        &= X(Y'(h)\circ f)(p)-Y(X'(h)\circ f)(p)\\
+        &= df_p(X)(Y'(h))-df_p(Y)(X'(h))\\
+        &= X'Y'(h\circ f)-Y'X'(h\circ f)\\
+        &= [X',Y'](h(f(p)))
+    \end{align*}
+    Hence, $df_p[X,Y] = [X',Y']_{f(p)}$.
+\end{proof}
+
+\section*{Question 3}
+For this question, $G$ and $H$ are Lie groups with identity elements $e_G$
+and $e_H$ respectively. We denote the Lie algebras $T_{e_G}G$ and $T_{e_H}H$
+as $\mathfrak{g}$ and $\mathfrak{h}$ respectively.
+\begin{theorem}
+    If $f:G\rightarrow H$ is a Lie group homomorphism, then $df_{e_G}:\mathfrak{g}\rightarrow\mathfrak{h}$
+    is a Lie algebra homomorphism.
+\end{theorem}
+\begin{proof}
+    We already know that $df_{e_{G}}$ is a linear map between vector spaces
+    $\mathfrak{g}$ and $\mathfrak{h}$. It remains to prove that
+    \begin{equation*}
+        df_{e_G}[X,Y] = [df_{e_G}X,df_{e_{H}}Y].
+    \end{equation*}
+    For $X,Y \in \mathfrak{g}$.
+    However this is precisely the result of question 2, so $df_{e_G}$
+    is a Lie algebra homomorphism.    
+\end{proof}
+
+
+\section*{Question 4}
+For this question, $\Heis$ is the set of real $3\times 3$ upper
+triangular matrices equal to $1$ on the main diagonal.
+\subsection*{(a)}
+\begin{lemma}
+    $\Heis$ is a Lie subgroup of $GL(n,\Rl)$.
+\end{lemma}
+\begin{proof}
+    Clearly $\Heis \subset GL(n,\Rl)$
+    since each element of $\Heis$ has determinant $1$. We also see 
+    the identity matrix is in $\Heis$.   
+    
+    Thus it is sufficient to prove that $\Heis$ is closed under matrix multiplication.
+    Let $a,b,c,d,e,f \in \Rl$, then
+    \begin{equation*}
+        \begin{pmatrix}  
+            1 & a & b\\
+            0 & 1 & c\\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & d & e\\
+            0 & 1 & f\\
+            0 & 0 & 1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1 & a+d  & e+b+af \\
+            0 & 1 &  f+c\\
+            0 & 0 & 1
+        \end{pmatrix}
+    \end{equation*}
+    Hence $\Heis$ is closed under matrix multiplication so is a Lie subgroup
+    of $GL(n,\Rl)$
+\end{proof}
+
+\subsection*{(b)}
+Now that we know $\Heis$ is a Lie group, denote its Lie algebra by $\Heisalg$.
+\begin{lemma}
+    The tangent space at the identity $T_{I}\Heis$ can be described by the set of 
+    matrices
+    \begin{equation*}
+        \begin{pmatrix}
+            0 & a & b\\
+            0 & 0 & c\\
+            0 & 0 & 0
+        \end{pmatrix}
+    \end{equation*}
+    for $a,b,c \in \Rl$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+\begin{theorem}
+    Thus the Lie Bracket on $\Heisalg$ is given by 
+\end{theorem}
+
+\subsection*{(c)}
+\begin{lemma}
+    $[\Heisalg,\Heisalg] = \Rl e_2$
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+\begin{lemma}
+    $[\Heisalg,[\Heisalg,\Heisalg]] = 0$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+
+
+\end{document}
